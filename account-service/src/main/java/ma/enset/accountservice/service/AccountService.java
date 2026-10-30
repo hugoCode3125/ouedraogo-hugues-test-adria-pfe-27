@@ -1,6 +1,4 @@
 package ma.enset.accountservice.service;
-
-import jakarta.transaction.Transactional;
 import ma.enset.accountservice.domain.Account;
 import ma.enset.accountservice.domain.AccountStatus;
 import ma.enset.accountservice.repository.AccountRepository;
@@ -22,7 +20,6 @@ public class AccountService {
 
         public Account create(Account account) {
             account.setStatus(AccountStatus.ACTIVE);
-            account.setBalance(0);
             return repository.save(account);
         }
 

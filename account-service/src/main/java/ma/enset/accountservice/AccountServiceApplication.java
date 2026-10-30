@@ -22,21 +22,21 @@ public class AccountServiceApplication {
                     .customerReference("Hugues")
                     .status(AccountStatus.ACTIVE)
                     .currency("EUR")
-                    .balance(0)
+                    .balance(1000)
                     .build());
 
             accountService.create(Account.builder()
                     .customerReference("Fawzi")
                     .status(AccountStatus.ACTIVE)
                     .currency("FCFA")
-                    .balance(0)
+                    .balance(20000)
                     .build());
 
             accountService.create(Account.builder()
                     .customerReference("Djelika")
                     .status(AccountStatus.ACTIVE)
                     .currency("MAD")
-                    .balance(0)
+                    .balance(5880)
                     .build());
         };
     }

@@ -1,0 +1,46 @@
+services:
+
+  eureka-server:
+    build: ./eureka-server
+    ports:
+      - "8761:8761"
+
+  config-server:
+    build: ./config-server
+    ports:
+      - "8888:8888"
+    depends_on:
+      - eureka-server
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "9999:9999"
+    depends_on:
+      - eureka-server
+      - config-server
+
+  account-service:
+    build: ./account-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - eureka-server
+      - config-server
+
+  transaction-service:
+    build: ./transaction-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - eureka-server
+      - config-server
+      - account-service
+
+  assistant-service:
+    build: ./assistant-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - account-service
+      - transaction-service

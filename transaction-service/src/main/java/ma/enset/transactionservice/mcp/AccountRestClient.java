@@ -13,7 +13,7 @@ import java.util.UUID;
 @FeignClient(name = "account-service")
 public interface AccountRestClient {
     @GetMapping("/accounts/{id}")
-    @CircuitBreaker(name = "customer-breaker",fallbackMethod = "getAccountDefault")
+    @CircuitBreaker(name = "customer-breaker",fallbackMethod = "getCustomerDefault")
     Account getAccount(@PathVariable UUID id);
 
     default Account getCustomerDefault( UUID id, Exception e) {
